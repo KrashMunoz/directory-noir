@@ -1,13 +1,19 @@
 <div class="section">
   <!-- <form> -->
   <input [(ngModel)]="contentFilter" type="text" name="" id="filterInput" placeholder="Discover Black-Owned Businesses">
-  <button type="submit" class="btn waves-light">Search</button>
+  <!-- <button type="submit" class="btn waves-light">Search</button> -->
   <!-- </form> -->
 </div>
 <table class="responsive-table striped">
   <thead>
     <tr>
-      <th *ngFor="let column of columnNames">{{column}}</th>
+      <!-- <th *ngFor="let col of columnNames">{{col}}</th> -->
+      <th>Name</th>
+      <th>Owner</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Website</th>
+      <th>Contact</th>
     </tr>
   </thead>
   <tbody>
