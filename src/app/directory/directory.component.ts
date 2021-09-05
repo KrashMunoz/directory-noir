@@ -20,15 +20,6 @@ export class DirectoryComponent implements OnInit {
     this._contentFilter = value;
     this.filteredContent = this.contentFilter ? this.doFilter(this.contentFilter) : this.content;
   }
-  // Static column names for the directory table
-  columnNames: [
-    "Business Name",
-    "Owner(s)",
-    "Business Type",
-    "Description",
-    "Website",
-    "Contact"
-  ]
 
   constructor(private dataService: DataService) { }
 
@@ -36,7 +27,6 @@ export class DirectoryComponent implements OnInit {
     this.getContent();
     this.filteredContent = this.content;
     this.contentFilter = '';
-
   }
 
   getContent(): void {
