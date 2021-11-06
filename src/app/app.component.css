@@ -7,3 +7,16 @@
 main {
   flex: 1 0 auto;
 } */
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+article {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+}
