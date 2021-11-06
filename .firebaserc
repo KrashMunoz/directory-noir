@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "directory-noir"
+  },
+  "targets": {
+    "directory-noir": {
+      "hosting": {
+        "directory-noir-app": [
+          "directory-noir"
+        ]
+      }
+    }
+  }
+}
