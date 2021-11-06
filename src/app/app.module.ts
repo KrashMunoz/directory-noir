@@ -11,12 +11,14 @@ import { FormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AppFooterComponent } from './app-footer/app-footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopNavigationComponent,
-    DirectoryComponent
+    DirectoryComponent,
+    AppFooterComponent
   ],
   imports: [
     BrowserModule,
