@@ -16,8 +16,7 @@
       "dom"
     ],
     "types": [
-      "jquery",
-      "materialize-css"
+      // "materialize-css"
     ]
   },
   "angularCompilerOptions": {
