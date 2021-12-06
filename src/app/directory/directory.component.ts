@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { FireBusiness } from '../business';
 import { DataService } from '../data.service';
 import { Business } from '../mock-content';
 
@@ -21,12 +23,19 @@ export class DirectoryComponent implements OnInit {
     this.filteredContent = this.contentFilter ? this.doFilter(this.contentFilter) : this.content;
   }
 
+  businesses;
+  sub: Subscription;
+
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     this.getContent();
     this.filteredContent = this.content;
     this.contentFilter = '';
+
+    this.sub = this.dataService
+      .getBusinesses()
+      .subscribe(businesses => (this.businesses = businesses.docs))
   }
 
   getContent(): void {

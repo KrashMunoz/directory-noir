@@ -4,7 +4,7 @@
   <!-- <button type="submit" class="btn waves-light">Search</button> -->
   <!-- </form> -->
 </div>
-<table class="responsive-table striped">
+<!-- <table class="responsive-table striped">
   <thead *ngIf="filteredContent.length > 0">
     <tr>
       <th>Name</th>
@@ -27,6 +27,35 @@
       </td>
       <td><a href="{{business.website}}" target="_blank">{{business.website}}</a></td>
       <td>{{business.contact}}</td>
+    </tr>
+  </tbody>
+</table> -->
+
+<table class="responsive-table striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Owner(s)</th>
+      <th>Category</th>
+      <th>Website</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Instagram</th>
+      <th>Twitter</th>
+      <th>Facebook</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let business of businesses">
+      <td>{{business.data().name || 'N/A'}}</td>
+      <td>{{business.data().owner || 'N/A'}}</td>
+      <td>{{business.data().category || 'N/A'}}</td>
+      <td>{{business.data().website || 'N/A'}}</td>
+      <td>{{business.data().contact.email || 'N/A'}}</td>
+      <td>{{business.data().contact.phone || 'N/A'}}</td>
+      <td>{{business.data().social.instagram || 'N/A'}}</td>
+      <td>{{business.data().social.twitter || 'N/A'}}</td>
+      <td>{{business.data().social.facebook || 'N/A'}}</td>
     </tr>
   </tbody>
 </table>
