@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QueryDocumentSnapshot } from '@angular/fire/firestore';
 import { Observable, Subscription } from 'rxjs';
 import { FireBusiness } from '../business';
 import { DataService } from '../data.service';
@@ -23,7 +24,7 @@ export class DirectoryComponent implements OnInit {
     this.filteredContent = this.contentFilter ? this.doFilter(this.contentFilter) : this.content;
   }
 
-  businesses;
+  businesses: QueryDocumentSnapshot<FireBusiness>[];
   sub: Subscription;
 
   constructor(private dataService: DataService) { }

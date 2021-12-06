@@ -37,7 +37,6 @@
       <th>Name</th>
       <th>Owner(s)</th>
       <th>Category</th>
-      <th>Website</th>
       <th>Email</th>
       <th>Phone</th>
       <th>Instagram</th>
@@ -47,10 +46,13 @@
   </thead>
   <tbody>
     <tr *ngFor="let business of businesses">
-      <td>{{business.data().name || 'N/A'}}</td>
+      <td>
+        <a *ngIf="business.data().website" href="{{business.data().website}}"
+          target="_blank">{{business.data().name}}</a>
+        <span *ngIf="!business.data().website">{{business.data().name}}</span>
+      </td>
       <td>{{business.data().owner || 'N/A'}}</td>
-      <td>{{business.data().category || 'N/A'}}</td>
-      <td>{{business.data().website || 'N/A'}}</td>
+      <td>{{(business.data().category | titlecase)  || 'N/A' }}</td>
       <td>{{business.data().contact.email || 'N/A'}}</td>
       <td>{{business.data().contact.phone || 'N/A'}}</td>
       <td>{{business.data().social.instagram || 'N/A'}}</td>
