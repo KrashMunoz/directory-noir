@@ -26,7 +26,7 @@ export class DirectoryComponent implements OnInit, OnDestroy {
     this.filteredDocs = this.contentFilter ? this.filterResults(this.contentFilter) : this.testDocs;
   }
 
-  businesses: QueryDocumentSnapshot<FireBusiness>[];
+  // businesses: QueryDocumentSnapshot<FireBusiness>[];
   testDocs: QueryDocumentSnapshot<any>[];
   filteredDocs: QueryDocumentSnapshot<any>[];
   sub: Subscription;
@@ -39,9 +39,9 @@ export class DirectoryComponent implements OnInit, OnDestroy {
     this.filteredContent = this.content;
     this.contentFilter = '';
 
-    this.sub = this.dataService
-      .getBusinesses()
-      .subscribe(businesses => (this.businesses = businesses.docs))
+    // this.sub = this.dataService
+    //   .getBusinesses()
+    //   .subscribe(businesses => (this.businesses = businesses.docs))
 
     this.testSub = this.dataService
       .getTests()
