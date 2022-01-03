@@ -31,7 +31,9 @@
   </tbody>
 </table> -->
 
-<table class="responsive-table striped">
+
+<!-- Old firestore setup -->
+<!-- <table class="responsive-table striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -58,6 +60,34 @@
       <td>{{business.data().social.instagram || 'N/A'}}</td>
       <td>{{business.data().social.twitter || 'N/A'}}</td>
       <td>{{business.data().social.facebook || 'N/A'}}</td>
+    </tr>
+  </tbody>
+</table> -->
+
+<!-- test data with updated data-->
+<table class="responsive-table striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Owner(s)</th>
+      <th>Category</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Instagram</th>
+      <th>Twitter</th>
+      <th>Facebook</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let doc of testDocs">
+      <td>{{doc.data().Name}}</td>
+      <td>{{doc.data().Owner}}</td>
+      <td>{{doc.data().Category | titlecase}}</td>
+      <td>{{doc.data().Email}}</td>
+      <td>{{doc.data().Phone}}</td>
+      <td>{{doc.data().Instagram}}</td>
+      <td>{{doc.data().Twitter}}</td>
+      <td>{{doc.data().Facebook}}</td>
     </tr>
   </tbody>
 </table>

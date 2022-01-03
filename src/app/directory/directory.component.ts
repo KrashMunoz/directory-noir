@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { QueryDocumentSnapshot } from '@angular/fire/firestore';
 import { Observable, Subscription } from 'rxjs';
 import { FireBusiness } from '../business';
@@ -10,7 +10,7 @@ import { Business } from '../mock-content';
   templateUrl: './directory.component.html',
   styleUrls: ['./directory.component.css']
 })
-export class DirectoryComponent implements OnInit {
+export class DirectoryComponent implements OnInit, OnDestroy {
   title: string = "Directory Noir: Businesses"
   content: Business[];
   filteredContent: Business[] = [];
@@ -25,7 +25,9 @@ export class DirectoryComponent implements OnInit {
   }
 
   businesses: QueryDocumentSnapshot<FireBusiness>[];
+  testDocs: QueryDocumentSnapshot<any>[];
   sub: Subscription;
+  testSub: Subscription;
 
   constructor(private dataService: DataService) { }
 
@@ -37,6 +39,17 @@ export class DirectoryComponent implements OnInit {
     this.sub = this.dataService
       .getBusinesses()
       .subscribe(businesses => (this.businesses = businesses.docs))
+
+    this.testSub = this.dataService
+      .getTests()
+      .subscribe(collection => {
+        this.testDocs = collection.docs
+      })
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+    this.testSub.unsubscribe();
   }
 
   getContent(): void {
