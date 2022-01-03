@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, fromCollectionRef } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
-import { FireBusiness } from './business';
+import { DNoirBusiness, FireBusiness } from './business';
 import { Business, CONTENT } from './mock-content'
 
 @Injectable({
@@ -22,7 +22,7 @@ export class DataService {
   }
 
   getTests() {
-    const testRef = this.db.collection('dnoir-test', ref => ref.orderBy('Category', 'asc'));
+    const testRef = this.db.collection<DNoirBusiness>('dnoir-test', ref => ref.orderBy('Category', 'asc'));
     return testRef.get();
   }
 

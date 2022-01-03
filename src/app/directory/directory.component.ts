@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { QueryDocumentSnapshot } from '@angular/fire/firestore';
 import { Observable, Subscription } from 'rxjs';
-import { FireBusiness } from '../business';
+import { FireBusiness, DNoirBusiness } from '../business';
 import { DataService } from '../data.service';
 import { Business } from '../mock-content';
 
@@ -27,8 +27,8 @@ export class DirectoryComponent implements OnInit, OnDestroy {
   }
 
   // businesses: QueryDocumentSnapshot<FireBusiness>[];
-  testDocs: QueryDocumentSnapshot<any>[];
-  filteredDocs: QueryDocumentSnapshot<any>[];
+  testDocs: QueryDocumentSnapshot<DNoirBusiness>[];
+  filteredDocs: QueryDocumentSnapshot<DNoirBusiness>[];
   sub: Subscription;
   testSub: Subscription;
 
