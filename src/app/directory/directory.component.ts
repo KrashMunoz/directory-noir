@@ -12,8 +12,8 @@ import { Business } from '../mock-content';
 })
 export class DirectoryComponent implements OnInit, OnDestroy {
   title: string = "Directory Noir: Businesses"
-  content: Business[];
-  filteredContent: Business[] = [];
+  // content: Business[];
+  // filteredContent: Business[] = [];
   _contentFilter: string = '';
   // Content filter getter and setter
   get contentFilter(): string {
@@ -21,7 +21,7 @@ export class DirectoryComponent implements OnInit, OnDestroy {
   }
   set contentFilter(value: string) {
     this._contentFilter = value;
-    this.filteredContent = this.contentFilter ? this.doFilter(this.contentFilter) : this.content;
+    // this.filteredContent = this.contentFilter ? this.doFilter(this.contentFilter) : this.content;
     // Filter query snapshot 
     this.filteredDocs = this.contentFilter ? this.filterResults(this.contentFilter) : this.testDocs;
   }
@@ -29,14 +29,14 @@ export class DirectoryComponent implements OnInit, OnDestroy {
   // businesses: QueryDocumentSnapshot<FireBusiness>[];
   testDocs: QueryDocumentSnapshot<DNoirBusiness>[];
   filteredDocs: QueryDocumentSnapshot<DNoirBusiness>[];
-  sub: Subscription;
+  // sub: Subscription;
   testSub: Subscription;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.getContent();
-    this.filteredContent = this.content;
+    // this.getContent();
+    // this.filteredContent = this.content;
     this.contentFilter = '';
 
     // this.sub = this.dataService
@@ -53,24 +53,25 @@ export class DirectoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    // this.sub.unsubscribe();
     this.testSub.unsubscribe();
   }
 
-  getContent(): void {
-    this.dataService.getContent().subscribe(content => this.content = content);
-  }
+  // getContent(): void {
+  //   this.dataService.getContent().subscribe(content => this.content = content);
+  // }
 
   // Filter logic
-  doFilter(filterBy: string): Business[] {
-    filterBy = filterBy.toLocaleLowerCase();
-    return this.content.filter((business: Business) =>
-      business.name.toLocaleLowerCase().indexOf(filterBy) !== -1)
-  }
+  // doFilter(filterBy: string): Business[] {
+  //   filterBy = filterBy.toLocaleLowerCase();
+  //   return this.content.filter((business: Business) =>
+  //     business.name.toLocaleLowerCase().indexOf(filterBy) !== -1)
+  // }
 
   filterResults(filterBy: string) {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.testDocs.filter((doc) => (doc.data().Name.toLocaleLowerCase().indexOf(filterBy) !== -1))
+    return this.testDocs.filter((doc) =>
+      doc.data().Name.toLocaleLowerCase().indexOf(filterBy) !== -1)
   }
 
 }
