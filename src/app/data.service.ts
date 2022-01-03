@@ -17,7 +17,6 @@ export class DataService {
   }
 
   getBusinesses() {
-    console.log("Data service query executed!!")
     const collectionRef = this.db.collection<FireBusiness>('businesses', ref => ref.orderBy("name", "asc"));
     return collectionRef.get();
   }
