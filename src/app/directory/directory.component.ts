@@ -22,10 +22,13 @@ export class DirectoryComponent implements OnInit, OnDestroy {
   set contentFilter(value: string) {
     this._contentFilter = value;
     this.filteredContent = this.contentFilter ? this.doFilter(this.contentFilter) : this.content;
+    // Filter query snapshot 
+    this.filteredDocs = this.contentFilter ? this.filterResults(this.contentFilter) : this.testDocs;
   }
 
   businesses: QueryDocumentSnapshot<FireBusiness>[];
   testDocs: QueryDocumentSnapshot<any>[];
+  filteredDocs: QueryDocumentSnapshot<any>[];
   sub: Subscription;
   testSub: Subscription;
 
@@ -43,7 +46,9 @@ export class DirectoryComponent implements OnInit, OnDestroy {
     this.testSub = this.dataService
       .getTests()
       .subscribe(collection => {
-        this.testDocs = collection.docs
+        // console.log(collection);
+        this.testDocs = collection.docs;
+        this.filteredDocs = this.testDocs;
       })
   }
 
@@ -61,6 +66,11 @@ export class DirectoryComponent implements OnInit, OnDestroy {
     filterBy = filterBy.toLocaleLowerCase();
     return this.content.filter((business: Business) =>
       business.name.toLocaleLowerCase().indexOf(filterBy) !== -1)
+  }
+
+  filterResults(filterBy: string) {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.testDocs.filter((doc) => (doc.data().Name.toLocaleLowerCase().indexOf(filterBy) !== -1))
   }
 
 }
